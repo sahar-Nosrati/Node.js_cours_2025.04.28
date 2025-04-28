@@ -1,0 +1,99 @@
+- Study node.js documents
+
+- common core modules and OS modules:
+  - file system -> const fs = require("fs") -> 
+  - path -> const path = require("path"); 
+  - OS -> const os = require("os); 
+
+
+- use of functions etc from custom modules -> we can destructure them and use in our file -> in order to export and destructure them, there are two ways -> 
+  - declare function and export needed functions in the end of modules -> module.exports = { add, subtract, multiply, divide, exponentiation } -> destructure needed functions in the script file 
+  - instead declaration with const -> put export. in front of the function -> destructure needed functions in the script file (cheek math.js and server .js)
+
+- Read a file -> 
+  - use fs module with readFile() method-> readFile() -> 3 parameters -> a) path , b) "utf8" -> show data not return data not buffer, c) call back function with (err, data) =>{
+    - if there is an erro throw it -> if (err) throw err; 
+    - perform action on data -> console.log(data);
+  } 
+
+  - point -> instead  directly use path -> use path module  with join() -> join() method with 3 parameters -> a) __dirname, , b) string of name of directory, c) name of file 
+
+  - handle of error -> process.on() -> 2 parameres -> a) event like : uncaughtException , b ) call back function for handling of error -> (err) => {
+    - perform action on errr -> print of it -> console.error(`There was an error : ${err}`); 
+    - finish of performance of code -> process.exit(1);
+  }
+
+
+- write a file -> 
+  - fs.writeFile(path.join(__dirname, "name of directory", "name of new(other) file), "a message", (err) => {
+    if (err) throw err
+    console.log ("A clear message")
+  })
+
+or 
+
+  process.on("uncaughtException", (err) => {
+    - perform action on errr -> print of it -> console.error(`There was an error : ${err}`); 
+    - finish of performance of code -> process.exit(1);
+  })
+
+
+- event -> Node.js core API is built around an idiomatic asynchronous( idiomatic asynchronous JavaScript means writing async code in a clean, readable, and efficient way) event-driven architecture in which certain kinds of objects (called "emitters") emit named events that cause Function objects ("listeners") to be called. -> -> explanation in **
+- Synchronously calls each of the listeners registered for the event named eventName, in the order they were registered, passing the supplied arguments to each. -> explanation in **
+
+- Specific object calling emitter calls event (with specific name), this event calls unction objects ("listeners") (like on) (listener has 2 parameters(1) event name, 2) listener)). emit() is used to trigger an event and calls each registered listeners of event 
+
+- emit is used to trigger an event
+- on is used to add a callback function that's going to be executed when the event is triggered
+
+- create server -> 
+  - step 1) create a port -> define port by process.env.port or single port we de fefine (for example 3500);
+  - step 2) import node core module ("http") 
+  - step 3) create serever variable by http core module and createServer() method ->
+    - createServer() contains callback function with 2 parameters (req, res) => {}  () -> final structure -> 
+      - const server = http.createServer((req,res)=> {})
+      - The createServer function's callback is the actual listener for requests.
+  - step 4) listen to server by server.listen(PORT, () => console.log(`Server running on port ${PORT}`)) -> Starts the server and makes it listen for incoming requests on the specified PORT; ->
+    - listen() -> contains 2 parameters -> 
+      - 1) PORT (port number) -> through it listen to listener is able to work 
+      - 2) function that runs after the server successfully starts. It runs once when the server starts successfully
+        - server.listen(PORT, ...) -> MAIN LISTENER 
+
+- points : in the created serever -> we can create path -> in order to read main HTML file ->
+  -point : req.url == "/" 
+
+  - create path and its steps -> 
+    - declare variable with name path2 (it should be different from path varibale which imported from path module) 
+    - If (req.url == "/" || req.url== "index.html")
+      - res.status -> 200
+      - res.setHeader((name, value)) -> res.setHeader("content-Type", "text/html)
+      - determine th path files which is being read -> path2 = path.join(__dirname, "views", "index.html")
+      - read file and send final res (res.end()) ->  fs.readFile(path2, "utf8", (err, data) => {
+      res.end(data)});
+
+
+- middleware -> anything between req and res and routh handle between them -> main function -> routh handeler for urlencoded data
+  - apply middleware and handle url in form data
+- Create middleware -> chaining or separate handeler 
+- anatomy of middleware (chaining middleware) -> 
+  app.get(
+  "/hello(.html)?",
+  (req, res, next) => {
+    console.log("Try to load hello.html");
+    next();
+  },
+  (req, res) => {
+    res.send("Hello world, Hello Sahar");
+  }
+);
+
+- types of middleware -> 
+  - buildin middleware
+  - custom middleware
+  - Third-party middleware
+
+- build-in middleware to handle urlencoded data -> in other words -> form data -> 
+  - 'content-Type:application/x-www-form-urlencoded' ->   
+    - app.use(express.urlencoded({extended:false})) 
+
+- point: app.use() -> using for middleware and handele of our routh 

@@ -1,0 +1,10 @@
+- different version of dependencies (semantic version of dependencies) ->
+  - "uuid": "11.0.5" -> 11 = major version, 0= minor version , 5 = batch -> 
+    - "uuid": "^11.0.5" -> Dont update major vesion but update minor version and batch 
+    - "uuid": "~11.0.5" -> just update batch 
+    - "uuid": "*" -> last version -> it is not safe at all 
+
+
+- process.env ->  is an object in Node.js that contains environment variables.
+- PORT-> is an environment variable that some hosting services (like Heroku, Vercel, etc.) provide to specify which port your app should run on.
+- Environment variables are key-value pairs used to store configuration settings outside of your code. They help keep sensitive data (like API keys, database URLs, or ports) separate from the codebase. 

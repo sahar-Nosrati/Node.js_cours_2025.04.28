@@ -1,0 +1,2 @@
+- common core modules (like file system module) works in asynchronous mode 
+- asynchronous js -> It means, js engine is interpreting codes and first executing all synchronous codes then after finish all code, it is executing all asynchronous codes. 

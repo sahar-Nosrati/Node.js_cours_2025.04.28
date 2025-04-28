@@ -1,0 +1,27 @@
+{
+  "name": "node.js_cours_2025.02.27",
+  "version": "1.0.0",
+  "description": "Express tutorial",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sahar-Nosrati/Node.js_cours_2025.02.27.git"
+  },
+  "author": "Sahar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sahar-Nosrati/Node.js_cours_2025.02.27/issues"
+  },
+  "homepage": "https://github.com/sahar-Nosrati/Node.js_cours_2025.02.27#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "express": "^4.21.2",
+    "nodemon": "^3.1.9",
+    "uuid": "^11.1.0"
+  }
+}

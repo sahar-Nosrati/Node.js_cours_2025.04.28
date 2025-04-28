@@ -1,0 +1,17 @@
+- execute file in node environment without nodemon and pakage.json ->
+  - node nameOfFile
+
+- installation of pakage.json and nodemon -> npm install
+  - pakage.json  installation 
+    - paksage.json -> in script part -> "start": "node index.js" -> run "npm start" -> it will execute entry point file in node environment -> entry point is usually index.js -> you can change it.
+  - installation of nodemon globally and in only project -> 
+    - npm install -g nodemon -> global instalation
+      - nodemon (with the name of file in order to execution) (without name, the current file will be executed)
+    - npm i nodemon -D   or npm install --save-dev nodemon -> project installation 
+      - paksage.json -> in script part -> "start": "dev": "nodemon index", "node index.js" -> 
+        - "npm start" 
+        - "npm run dev
+
+- npm i uuid -> generate id for each entry
+- npm update -> update dependencies in npm 
+- npm rm nodemon -D(g) -> uninstall nodemon from production (or global)
